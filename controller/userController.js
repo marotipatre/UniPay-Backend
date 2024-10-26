@@ -5,17 +5,19 @@ const Bounty = require("../model/bounty.js");
 const BountySubmission = require("../model/bountySubmission.js");
 
 exports.createSponserProfile = async (req, res) => {
+  console.log("hello api is calling")
   try {
     const {
       companyName,
       companyUserName,
       companyUrl,
-      bio,
       twitterUrl,
       industry,
+      bio,
       walletAddress
     } = req.body;
 
+    
     const sponser = new Sponser({
       companyName,
       companyUserName,
@@ -26,8 +28,8 @@ exports.createSponserProfile = async (req, res) => {
       walletAddress,
     });
     await sponser.save();
-
-    res.status(200).json({ message: "sponser created successfully" });
+    console.log(sponser);
+    return res.status(200).json({ message: "sponser created successfully" });
 
   } catch (error) {
     console.error("Error adding user:", error);
