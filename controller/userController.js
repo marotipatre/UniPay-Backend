@@ -188,8 +188,9 @@ exports.getBountyById = async (req, res) => {
 
 exports.getSponserProfile = async (req, res) => {
   const { walletAddress } = req.params;
+  console.log(walletAddress);
   const sponser = await Sponser.findOne({ walletAddress })
-
+  console.log(sponser,"backend");
   if (sponser == null) {
     return res.status(200).json({ bounty: [] })
   }
